@@ -1,0 +1,3 @@
+export const SET_USER_NAME = 'SET_USER_NAME' ;
+
+export const INCREMENT_CASH = 'INCREMENT_CASH';
