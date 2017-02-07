@@ -22,21 +22,23 @@ class Game extends React.Component {
         <View>
           <CashGenerator
             name="Hamster"
-            cost={1000000}
-            costMultiplier={1.5}
+            cost={1}
+            costMultiplier={1.001}
             income={1}
-            incomeMultiplier={1.4}
+            incomeMultiplier={1.001}
             sleep={1000}
-            sleepMultiplier={0.9}
+            sleepMultiplier={0.99}
+            level={1}
           />
           <CashGenerator
             name="Hamster"
             cost={1}
-            costMultiplier={1.5}
+            costMultiplier={1.6}
             income={1}
-            incomeMultiplier={1.4}
-            sleep={1000}
+            incomeMultiplier={1.2}
+            sleep={1500}
             sleepMultiplier={0.9}
+            level={0}
           />
         </View>
       </View>

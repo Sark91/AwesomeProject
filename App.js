@@ -14,8 +14,6 @@ const history = window.__IS_BROWSER__
   ? browserHistory
   : createMemoryHistory('/');
 
-console.log(window.navigator);
-
 export default class App extends React.Component {
   render() {
     return (
