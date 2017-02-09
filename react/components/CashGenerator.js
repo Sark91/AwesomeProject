@@ -1,9 +1,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
-
-import style from 'AwesomeProject/react/styles/components/CashGenerator';
 import { incrementCash } from 'AwesomeProject/react/actions/game';
+
+import style, {
+  CashGeneratorProgressbarInnerWidth,
+} from 'AwesomeProject/react/styles/components/CashGenerator';
+
+const CashGeneratorProgressbarInnerWidthD10 = CashGeneratorProgressbarInnerWidth / 5;
 
 class CashGenerstor extends React.Component {
   static propTypes = {
@@ -24,7 +28,7 @@ class CashGenerstor extends React.Component {
       cost: props.cost,
       income: props.income,
       sleep: props.sleep,
-      sleepD10: parseInt(props.sleep / 10, 10),
+      sleepD10: parseInt(props.sleep / 5, 10),
       progressbarWidth: 0,
     };
   }
@@ -39,7 +43,6 @@ class CashGenerstor extends React.Component {
   }
 
   handlePress = () => {
-    console.log('CashGenerator.handlePress');
     if (this.props.cash >= this.state.cost) {
       const sleep = this.state.sleep * this.props.sleepMultiplier;
       this.props.incrementCash(-this.state.cost);
@@ -47,19 +50,19 @@ class CashGenerstor extends React.Component {
         cost: this.state.cost * this.props.costMultiplier,
         income: this.state.income * this.props.incomeMultiplier,
         sleep,
-        sleepD10: parseInt(sleep / 10),
+        sleepD10: parseInt(sleep / 5),
       });
     }
   };
 
   nextTick = () => {
-    if (this.state.progressbarWidth >= 100) {
+    if (this.state.progressbarWidth >= CashGeneratorProgressbarInnerWidth) {
       this.props.incrementCash(this.state.income);
       this.setState({ progressbarWidth: 0 });
     }
     else {
       this.setState({
-        progressbarWidth: this.state.progressbarWidth + 10
+        progressbarWidth: this.state.progressbarWidth + CashGeneratorProgressbarInnerWidthD10
       });
     }
 
